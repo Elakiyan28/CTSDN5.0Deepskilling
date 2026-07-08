@@ -1,0 +1,11 @@
+fastapi>=0.110
+uvicorn>=0.29
+sqlalchemy>=2.0
+aiosqlite>=0.20
+pydantic>=2.0
+python-jose[cryptography]>=3.3
+passlib[bcrypt]>=1.7
+# passlib's bcrypt backend breaks on bcrypt>=4.1 (missing __about__) - pin this
+bcrypt==4.0.1
+python-multipart>=0.0.9
+email-validator>=2.0
