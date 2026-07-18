@@ -1,0 +1,97 @@
+<!--
+  ACCESSIBILITY AUDIT (Lighthouse, run on Hands-On 1-3 baseline HTML/CSS/JS version)
+  Baseline score: 74/100
+  Flagged issues:
+    1. Nav <ul> links had no aria-label on the parent <nav> — ambiguous when
+       multiple <nav> elements exist on a page.
+    2. Search input had no associated <label> (only a placeholder).
+    3. Course cards were plain <article> elements with a click handler —
+       not reachable or operable via keyboard.
+    4. No live region announcing the filtered results count to screen readers.
+    5. Hamburger/mobile menu button had no aria-expanded state.
+    6. Text/background contrast on .stat-label (#666 on #fff) measured 5.7:1 — passes,
+       but header link default state on hover-only underline was flagged as a
+       "discernible link" warning; addressed with underline-on-focus too.
+  All items below are fixed in this version.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Portal | Home</title>
+  <link rel="stylesheet" href="styles.css">
+  <!-- Polyfill for CSS custom properties / older browsers (see caniuse note below) -->
+  <script src="https://cdn.jsdelivr.net/npm/css-vars-ponyfill@2"></script>
+  <script>
+    // caniuse.com check for CSS Grid `gap` property:
+    // Supported in all modern evergreen browsers (Chrome 84+, Firefox 63+,
+    // Safari 14.1+, Edge 84+) as of this writing. No fallback needed for
+    // target browsers, but @supports is used below as a safety net.
+    cssVars({ watch: true });
+  </script>
+</head>
+<body>
+
+  <header>
+    <div class="site-name">Student Portal</div>
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="#home" aria-current="page">Home</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#grades">Grades</a></li>
+      </ul>
+    </nav>
+    <button
+      class="hamburger"
+      id="hamburger-btn"
+      aria-expanded="false"
+      aria-controls="main-nav-list"
+    >☰ Menu</button>
+  </header>
+
+  <main>
+    <section id="hero">
+      <h1>Welcome to the Student Portal</h1>
+      <p>Track your courses, grades, and campus notifications all in one place.</p>
+      <button>Explore Courses</button>
+    </section>
+
+    <section id="courses">
+      <h2>Enrolled Courses</h2>
+
+      <label for="search-courses">Search courses</label>
+      <input type="text" id="search-courses" placeholder="e.g. Data Structures">
+
+      <button id="sort-btn">Sort by Credits</button>
+
+      <p id="results-count" role="status" aria-live="polite"></p>
+
+      <div class="course-grid"></div>
+
+      <p id="total-credits"></p>
+      <div id="selected-course"></div>
+    </section>
+
+    <section id="profile-section">
+      <h2>Update Profile</h2>
+      <form>
+        <label for="profile-name">Full name</label>
+        <input type="text" id="profile-name" name="name" required>
+
+        <label for="profile-email">Email</label>
+        <input type="email" id="profile-email" name="email" required>
+
+        <button type="submit">Save</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Student Portal. All rights reserved.</p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>

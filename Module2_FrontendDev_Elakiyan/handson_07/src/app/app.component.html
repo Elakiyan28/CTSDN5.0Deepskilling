@@ -1,0 +1,17 @@
+<header class="header">
+  <div class="site-name">{{ siteName }}</div>
+  <nav aria-label="Main navigation">
+    <ul>
+      <li><a [routerLink]="['/']">Courses</a></li>
+      <li><a [routerLink]="['/profile']">Profile</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+  <router-outlet></router-outlet>
+</main>
+
+<footer class="footer">
+  <p>&copy; 2026 Student Portal. All rights reserved.</p>
+</footer>
