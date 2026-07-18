@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Portal | Home</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <div class="site-name">Student Portal</div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#grades">Grades</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger">☰ Menu</button>
+  </header>
+
+  <main>
+    <section id="hero">
+      <h1>Welcome to the Student Portal</h1>
+      <p>Track your courses, grades, and campus notifications all in one place.</p>
+      <button>Explore Courses</button>
+    </section>
+
+    <section class="stats-bar">
+      <div class="stat-item">
+        <span class="stat-value">3</span>
+        <span class="stat-label">Courses Enrolled</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">3.8</span>
+        <span class="stat-label">GPA</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-value">6</span>
+        <span class="stat-label">Semester</span>
+      </div>
+    </section>
+
+    <section id="courses">
+      <h2>Enrolled Courses</h2>
+
+      <input type="text" id="search-courses" placeholder="Search courses...">
+      <button id="sort-btn">Sort by Credits</button>
+
+      <div class="course-grid">
+        <!-- rendered dynamically by app.js -->
+      </div>
+
+      <p id="total-credits"></p>
+      <div id="selected-course"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Student Portal. All rights reserved.</p>
+  </footer>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
