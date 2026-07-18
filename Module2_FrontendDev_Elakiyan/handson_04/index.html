@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Portal | Home</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <header>
+    <div class="site-name">Student Portal</div>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#profile">Profile</a></li>
+        <li><a href="#grades">Grades</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger">☰ Menu</button>
+  </header>
+
+  <main>
+    <section id="hero">
+      <h1>Welcome to the Student Portal</h1>
+      <p>Track your courses, grades, and campus notifications all in one place.</p>
+      <button>Explore Courses</button>
+    </section>
+
+    <section id="courses">
+      <h2>Enrolled Courses</h2>
+      <div class="course-grid"></div>
+      <p id="total-credits"></p>
+    </section>
+
+    <section id="notifications-wrap">
+      <h2>Notifications</h2>
+      <button id="break-fetch-btn">Simulate 404 error</button>
+      <div id="notifications"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Student Portal. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script type="module" src="app.js"></script>
+</body>
+</html>
