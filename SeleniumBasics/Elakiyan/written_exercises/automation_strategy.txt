@@ -1,0 +1,88 @@
+Hands-On 3: Test Automation Process, Lifecycle & Framework Types
+
+Task 1: Automation Decision and Test Case Selection
+
+Criteria for Automation:
+1. Repeatability – Test is executed often (e.g., regression).
+2. High Risk – Critical functionality must always work.
+3. Stability – Feature is stable and not changing frequently.
+4. Data-Driven – Test requires multiple input variations.
+5. ROI – Automation saves time compared to manual execution.
+
+Applied Example:
+POST /api/courses/ returns 201 with valid input.
+- Repeatable regression → Automate.
+- High risk (course creation critical) → Automate.
+- Stable endpoint → Automate.
+- Data-driven (different course codes) → Automate.
+- ROI positive → Automate.
+
+Test Case Classification:
+a) Regression test for CRUD endpoints → Automate (repeated often).
+b) Exploratory testing of new search feature → Manual (creative, not repeatable).
+c) Performance test with 100 concurrent users → Manual/Tool-based (not Selenium).
+d) UI test for login form → Automate (critical, repeatable).
+e) Verify API documentation accuracy → Manual (human judgment).
+f) Smoke test: API reachable after deployment → Automate (quick check).
+
+Automation ROI:
+- Automating one regression test takes 4 hours.
+- Manual run takes 30 minutes.
+- Break-even: 8 runs (4 hours ÷ 0.5 hours).
+- After 10 runs, add 20% maintenance overhead.
+- Example: 12 runs → 12 × 0.5 = 6 hours manual vs 4 + (2 × 0.5) = 5 hours automated → ROI achieved.
+
+Flaky Tests:
+Definition: Tests that sometimes pass and sometimes fail without code changes.
+Example: Login test fails intermittently due to timing issues.
+Strategies:
+1. Use explicit waits instead of sleep().
+2. Stabilize test data/environment.
+3. Improve locator robustness (avoid brittle XPath).
+
+---
+
+Task 2: Compare Automation Framework Types
+
+Linear Framework:
+- Description: Record/playback, sequential scripts.
+- Advantage: Simple to start.
+- Disadvantage: Hard to maintain.
+- Example: Quick demo scripts.
+
+Modular Framework:
+- Description: Break tests into reusable modules.
+- Advantage: Reusability.
+- Disadvantage: Initial setup effort.
+- Example: Separate login module reused across tests.
+
+Data-Driven Framework:
+- Description: Externalize test data (CSV, Excel).
+- Advantage: Easy to run with multiple inputs.
+- Disadvantage: Complex data management.
+- Example: Testing course creation with 50 codes.
+
+Keyword-Driven Framework:
+- Description: Keywords map to actions (login, click).
+- Advantage: Non-technical users can write tests.
+- Disadvantage: Requires keyword library.
+- Example: Business analysts writing test steps.
+
+Hybrid Framework:
+- Description: Combines modular, data-driven, keyword-driven.
+- Advantage: Most flexible and maintainable.
+- Disadvantage: Complex design.
+- Example: Large projects with mixed team skills.
+
+Framework Recommendation:
+For Course Management frontend:
+- Needs login reuse, multiple user/password combinations, and support for technical + non-technical testers.
+- Recommended: Hybrid framework (modular + data-driven + keyword-driven).
+
+Hybrid Framework Folder Structure:
+- /tests → Test scripts
+- /pages → Page Object classes
+- /data → Test data files (CSV/Excel)
+- /utils → Utility functions (waits, screenshots)
+- /config → Configuration (URLs, environment)
+- /reports → Test execution reports

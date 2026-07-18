@@ -1,0 +1,49 @@
+Hands-On 1: QA Concepts, Functional Testing & Defect Lifecycle
+
+Task 1: Testing Types for Course Management API
+- Unit Testing: Validate validate_course_code() function. Expected: True for valid codes.
+- Integration Testing: POST /api/courses/ inserts record into DB. Expected: 201 Created, DB entry exists.
+- System Testing: Admin creates course → student enrolls → DB reflects enrollment.
+- User Acceptance Testing: College admin uses UI to create course. Expected: Course visible in student portal.
+
+Functional vs Non-Functional:
+- Functional: Does POST /api/courses/ create a course?
+- Non-Functional: API responds within 2 seconds under 100 concurrent requests.
+
+Black-Box vs White-Box:
+- Black-Box: QA tester validates API without knowing code.
+- White-Box: Developer tests internal logic with code knowledge.
+
+Task 2: Formal Test Cases for POST /api/courses/
+TC01 | Create course with valid data | API running | Send POST {name:"DS", code:"CS101", credits:4} | 201 Created, course saved
+TC02 | Duplicate course code | Course CS101 exists | Send POST {name:"Algo", code:"CS101"} | 400 Bad Request, error message
+TC03 | Missing required field | API running | Send POST {code:"CS102"} | 400 Bad Request, “name required”
+
+Task 3: Defect Lifecycle
+Lifecycle: New → Assigned → Open → Fixed → Retest → Verified → Closed
+Rejected: Developer says not a bug.
+Deferred: Fix postponed to later release.
+
+Task 4: Severity & Priority Classification
+a) POST /api/courses/ returns 500 → Severity: Critical, Priority: P1
+b) Course names truncated silently → Severity: Medium, Priority: P2
+c) Swagger typo → Severity: Low, Priority: P4
+d) Login intermittently fails → Severity: High, Priority: P1
+
+Task 5: Defect Report Example
+Defect ID: API-001
+Title: POST /api/courses/ returns 500 error
+Environment: Dev server, Python 3.10, Django backend
+Build Version: v1.0.0
+Severity: Critical
+Priority: P1
+Steps to Reproduce:
+1. Send POST /api/courses/ with valid JSON.
+2. Observe response.
+Expected Result: 201 Created with course details.
+Actual Result: 500 Internal Server Error.
+Attachments: Screenshot of 500 error.
+
+Task 6: Severity vs Priority Example
+- High Severity, Low Priority: API crash in rarely used admin report.
+- Low Severity, High Priority: Typo on CEO dashboard (“Cours” instead of “Course”).

@@ -1,0 +1,62 @@
+Hands-On 2: SDLC vs TDLC - V-Model & Agile QA Integration
+
+Task 1: V-Model Mapping
+V-Model Diagram (Text Representation):
+Requirements        → Acceptance Testing
+System Design       → System Testing
+Architecture Design → Integration Testing
+Module Design       → Unit Testing
+        Coding (bottom vertex)
+
+SDLC ↔ TDLC Phase Mapping:
+- Requirements ↔ Acceptance Testing → Acceptance Test Plan prepared.
+- System Design ↔ System Testing → System Test Plan prepared.
+- Architecture Design ↔ Integration Testing → Integration Test Plan prepared.
+- Module Design ↔ Unit Testing → Unit Test Cases prepared.
+- Coding → Actual implementation + execution of tests.
+
+Entry & Exit Criteria:
+- Unit Testing: Entry: Module code complete, reviewed. Exit: All unit test cases executed, no critical defects.
+- Integration Testing: Entry: Modules integrated, stable build available. Exit: Interfaces validated, defects below threshold.
+- System Testing: Entry: Full system build ready. Exit: All system test cases executed, no open high defects.
+- Acceptance Testing: Entry: System testing passed, UAT environment ready. Exit: Business requirements validated, stakeholders sign-off.
+
+QA Engagement Points:
+- Requirements Review (catch ambiguities early).
+- Architecture Design Review (ensure testability of components).
+
+Task 2: Agile QA and Shift-Left Testing
+Problems with Waterfall Testing:
+1. Defects found late → costly to fix.
+2. QA idle until dev complete → wasted time.
+3. Requirements misunderstood → discovered only at system testing.
+
+QA Role in Agile Ceremonies:
+- Sprint Planning → Define acceptance criteria.
+- Daily Standup → Raise blockers.
+- Sprint Review → Validate demo features.
+- Retrospective → Suggest process improvements.
+
+Shift-Left Practices:
+1. Requirement Review → QA ensures requirements are testable.
+2. TDD/BDD → Write tests before code.
+3. Static Code Analysis → Catch issues early.
+4. API Contract Testing → Validate API schema before integration.
+
+Acceptance Criteria (Gherkin):
+User Story: As a college admin, I want to create a new course, so that students can enroll in it.
+
+Happy Path:
+Given I am logged in as admin
+When I submit a new course with valid details
+Then the course is created successfully
+
+Duplicate Course Code:
+Given a course with code CS101 exists
+When I try to create another course with code CS101
+Then I should see an error "Course code already exists"
+
+Missing Required Fields:
+Given I am logged in as admin
+When I submit a course without a name
+Then I should see an error "Course name is required"
