@@ -1,0 +1,1 @@
+# Dependencies (selenium, pytest, webdriver-manager)
